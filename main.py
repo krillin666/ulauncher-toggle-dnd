@@ -29,15 +29,18 @@ class KeywordQueryEventListener(EventListener):
 
         if output_gnome == 'true':
             value_gnome = 'false' 
-            print("okay gnome")
+
 
         elif output_dunst == 'false': 
 
             value_dunst = "true" 
-            print("okay dunst")
-        else:
 
+            
+        elif output_gnome == 'false':
             value_gnome = "true" 
+            
+        elif output_dunst == 'true': 
+            
             value_dunst = "false"
 
         subprocess.Popen(
