@@ -27,7 +27,7 @@ class KeywordQueryEventListener(EventListener):
             value_gnome = "true" 
             value_dunst = "false"
         subprocess.Popen(
-            'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + " dunstctl set-pause " + value_dunst, shell=True)
+            'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + "&" " dunstctl set-pause " + value_dunst, shell=True)
         return HideWindowAction()
 
 
