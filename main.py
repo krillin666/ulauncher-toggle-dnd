@@ -34,6 +34,9 @@ class KeywordQueryEventListener(EventListener):
         print("output_gnome = " + output_gnome)
   
         print("output_dunst = " + output_dunst)      
+    
+        print("value_gnome = " + value_gnome)
+        print("value_dunst = " + value_dunst)
         
         if output_gnome == 'true':
             value_gnome = 'false' 
@@ -54,6 +57,9 @@ class KeywordQueryEventListener(EventListener):
             print("1")
 
             value_dunst = "false"
+            
+        print("value_gnome = " + value_gnome)
+        print("value_dunst = " + value_dunst)
 
         subprocess.Popen(
             'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + " &" " dunstctl set-paused " + value_dunst, shell=True)
