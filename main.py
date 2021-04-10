@@ -28,7 +28,7 @@ class KeywordQueryEventListener(EventListener):
         if output_gnome == 'true':
             value_gnome = 'false' 
 
-        elif output_dunst == 'false: 
+        elif output_dunst == 'false': 
 
             value_dunst = "true" 
 
