@@ -19,11 +19,11 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         process_gnome = subprocess.Popen(
             ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners'], stdout=subprocess.PIPE)
-        output_gnome = process.stdout.readline().decode('utf-8').strip()
+        output_gnome = process_gnome.stdout.readline().decode('utf-8').strip()
 
         process_dunst = subprocess.Popen(
             ['dunstctl', 'is-paused'], stdout=subprocess.PIPE)
-        output_dunst = process.stdout.readline().decode('utf-8').strip()
+        output_dunst = process_dunst.stdout.readline().decode('utf-8').strip()
 
         if output_gnome == 'true':
             value_gnome = 'false' 
