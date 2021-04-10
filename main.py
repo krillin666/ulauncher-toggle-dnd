@@ -6,8 +6,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 import subprocess
 
-value_gnome = ''
-value_dunst = ''
+
 
 class ToggleDnD(Extension):
 
@@ -17,6 +16,9 @@ class ToggleDnD(Extension):
 
 
 class KeywordQueryEventListener(EventListener):
+    
+    value_gnome = ''
+    value_dunst = ''
 
     def on_event(self, event, extension):
         process_gnome = subprocess.Popen(
