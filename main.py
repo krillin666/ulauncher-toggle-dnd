@@ -17,17 +17,29 @@ class ToggleDnD(Extension):
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
-        process = subprocess.Popen(
-            ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners' '&', 'dunstctl', 'set-pause' ], stdout=subprocess.PIPE)
-        output = process.stdout.readline().decode('utf-8').strip()
-        if output == 'true':
+        process_gnome = subprocess.Popen(
+            ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners'], stdout=subprocess.PIPE)
+        output_gnome = process.stdout.readline().decode('utf-8').strip()
+
+        process_dunst = subprocess.Popen(
+            ['dunstctl', 'is-paused'], stdout=subprocess.PIPE)
+        output_dunst = process.stdout.readline().decode('utf-8').strip()
+
+        if output_gnome == 'true':
             value_gnome = 'false' 
-            value_dunst = "false" 
-        else: 
+
+        elif output_dunst == 'false: 
+
+            value_dunst = "true" 
+
+        else:
+
             value_gnome = "true" 
             value_dunst = "false"
+
         subprocess.Popen(
             'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + "&" " dunstctl set-pause " + value_dunst, shell=True)
+
         return HideWindowAction()
 
 
