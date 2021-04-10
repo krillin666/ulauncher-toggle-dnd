@@ -18,7 +18,7 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
         process = subprocess.Popen(
-            ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners'], stdout=subprocess.PIPE)
+            ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners' '&', 'dunstctl', 'set-pause' ], stdout=subprocess.PIPE)
         output = process.stdout.readline().decode('utf-8').strip()
         if output == 'true':
             value_gnome = 'false' 
