@@ -26,7 +26,10 @@ class KeywordQueryEventListener(EventListener):
             ['dunstctl', 'is-paused'], stdout=subprocess.PIPE)
         output_dunst = process_dunst.stdout.readline().decode('utf-8').strip()
 
-
+        print("output_gnome = " + output_gnome)
+  
+        print("output_dunst = " + output_dunst)      
+        
         if output_gnome == 'true':
             value_gnome = 'false' 
             print("1")
