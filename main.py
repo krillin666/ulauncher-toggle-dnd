@@ -17,10 +17,11 @@ class ToggleDnD(Extension):
 
 class KeywordQueryEventListener(EventListener):
     
-    value_gnome = ''
-    value_dunst = ''
+
 
     def on_event(self, event, extension):
+        value_gnome = ''
+        value_dunst = ''
         process_gnome = subprocess.Popen(
             ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners'], stdout=subprocess.PIPE)
         output_gnome = process_gnome.stdout.readline().decode('utf-8').strip()
