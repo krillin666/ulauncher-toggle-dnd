@@ -31,27 +31,20 @@ class KeywordQueryEventListener(EventListener):
             ['dunstctl', 'is-paused'], stdout=subprocess.PIPE)
         output_dunst = process_dunst.stdout.readline().decode('utf-8').strip()
 
-        print("output_gnome = " + output_gnome)
-  
-        print("output_dunst = " + output_dunst)      
-    
-        print("value_gnome = " + value_gnome)
-        print("value_dunst = " + value_dunst)
-        
+       
         if output_gnome == 'true' and output_dunst == 'false':
             value_gnome = 'false' 
             value_dunst = "true" 
-            print("1")
-
+ 
             
         elif output_gnome == 'false' and output_dunst == 'true':
             value_gnome = "true" 
             value_dunst = "false"
-            print("2")
+
 
             
         elif output_gnome == 'false' and output_dunst == 'false':
-            print("3")
+
             value_gnome = "true"
             value_dunst = "false"
             
@@ -60,8 +53,6 @@ class KeywordQueryEventListener(EventListener):
             value_gnome = "false"
             value_dunst = "false"
         
-        print("value_gnome = " + value_gnome)
-        print("value_dunst = " + value_dunst)
 
         subprocess.Popen(
             'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + " &" " dunstctl set-paused " + value_dunst, shell=True)
