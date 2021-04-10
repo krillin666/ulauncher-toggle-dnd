@@ -50,12 +50,12 @@ class KeywordQueryEventListener(EventListener):
             print("2")
 
             
-       elif output_gnome == 'false' and output_dunst == 'false':
+        elif output_gnome == 'false' and output_dunst == 'false':
             print("3")
             value_gnome = "true"
             value_dunst = "false"
             
-       elif output_gnome == 'true' and output_dunst == 'true':
+        elif output_gnome == 'true' and output_dunst == 'true':
         
             value_gnome = "false"
             value_dunst = "false"
