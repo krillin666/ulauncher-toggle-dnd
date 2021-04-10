@@ -38,26 +38,28 @@ class KeywordQueryEventListener(EventListener):
         print("value_gnome = " + value_gnome)
         print("value_dunst = " + value_dunst)
         
-        if output_gnome == 'true':
+        if output_gnome == 'true' and output_dunst == 'false':
             value_gnome = 'false' 
+            value_dunst = "true" 
             print("1")
 
-        elif output_dunst == 'false': 
-
-            value_dunst = "true" 
+            
+        elif output_gnome == 'false' and output_dunst == 'true':
+            value_gnome = "true" 
+            value_dunst = "false"
             print("2")
 
             
-        elif output_gnome == 'false':
-            value_gnome = "true" 
+       elif output_gnome == 'false' and output_dunst == 'false':
             print("3")
-
-            
-        elif output_dunst == 'true': 
-            print("1")
-
+            value_gnome = "true"
             value_dunst = "false"
             
+       elif output_gnome == 'true' and output_dunst == 'true':
+        
+            value_gnome = "false"
+            value_dunst = "false"
+        
         print("value_gnome = " + value_gnome)
         print("value_dunst = " + value_dunst)
 
