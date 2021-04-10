@@ -20,7 +20,12 @@ class KeywordQueryEventListener(EventListener):
         process = subprocess.Popen(
             ['gsettings', 'get', 'org.gnome.desktop.notifications', 'show-banners'], stdout=subprocess.PIPE)
         output = process.stdout.readline().decode('utf-8').strip()
-        value_gnome = 'false' and value_dunst = "false" if output == 'true' else value_gnome = "true" and value_dunst = "false"
+        if output == 'true':
+            value_gnome = 'false' 
+            value_dunst = "false" 
+        else: 
+            value_gnome = "true" 
+            value_dunst = "false"
         subprocess.Popen(
             'gsettings set org.gnome.desktop.notifications show-banners ' + value_gnome + " dunstctl set-pause " + value_dunst, shell=True)
         return HideWindowAction()
